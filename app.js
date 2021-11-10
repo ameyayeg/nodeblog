@@ -6,7 +6,7 @@ require('dotenv').config()
 
 // Connect to MongoDB and creating the server until .then runs
 mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology:true })
-    .then((res) => app.listen(8080))
+    .then((res) => app.listen(process.env.PORT || 8080))
     .catch((err) => console.log(err))
 
 // Register view engine
