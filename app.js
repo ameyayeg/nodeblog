@@ -5,7 +5,6 @@ const blogRoutes = require('./routes/blogRoutes')
 require('dotenv').config()
 
 // Connect to MongoDB and creating the server until .then runs
-const dbURI = 'mongodb+srv://ameyayeg:rldl33JwBNK0A491@nodeblogs.a4sxe.mongodb.net/nodeblogs?retryWrites=true&w=majority'
 mongoose.connect(process.env.dbURI, {useNewUrlParser: true, useUnifiedTopology:true })
     .then((res) => app.listen(8080))
     .catch((err) => console.log(err))
