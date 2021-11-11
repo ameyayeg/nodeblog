@@ -38,6 +38,7 @@ body {
 nav {
   grid-area: nav;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   background-color: var(--background-head);
   color: var(--white);
@@ -56,11 +57,21 @@ nav ul {
 nav ul li a {
   color: var(--white);
   text-transform: uppercase;
+  font-weight: 800;
 }
 
 nav ul a:hover,
 nav ul a:focus {
   color: var(--hover);
+}
+
+.hamburger {
+  background-color: transparent;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  display: none;
 }
 
 h2 {
@@ -176,4 +187,35 @@ footer a {
 
 footer a:hover {
   color: var(--hover);
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'nav'
+      'container'
+      'footer';
+  }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .about {
+    padding: 1.5em;
+  }
+
+  .create {
+    padding: 1.5em;
+  }
 }
