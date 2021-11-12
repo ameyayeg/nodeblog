@@ -211,11 +211,9 @@ footer a:hover {
     display: block;
   }
 
-  .about {
-    padding: 1.5em;
-  }
-
-  .create {
-    padding: 1.5em;
+  .about,
+  .create,
+  .details {
+    padding: 0 1.5em;
   }
 }
