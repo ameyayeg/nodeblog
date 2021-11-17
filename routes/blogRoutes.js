@@ -1,6 +1,7 @@
 const express = require('express')
 const Blog = require('../models/blogs')
 const router = express.Router()
+const { ensureAuthenticated } = require('../config/auth')
 
 router.get('/', (req, res) => {
     Blog.find().sort({ createdAt: -1 })
@@ -24,15 +25,22 @@ router.post('/', (req, res) => {
         })
 })
 
-router.get('/create', (req, res) => {
-    res.render('create', { title: 'Create a new blog'})
+router.get('/create', ensureAuthenticated, (req, res) => {
+    res.render('create', {
+         title: 'Create a new blog',
+         name: req.user.name
+        })
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', ensureAuthenticated, (req, res) => {
     const id = req.params.id
     Blog.findById(id)
         .then((result) => {
-            res.render('details', { blog: result, title: 'A blog' })
+            res.render('details', { 
+                blog: result, 
+                title: 'A blog',
+                name: req.user.name
+             })
         })
         .catch((err) => {
             res.status(404).render('404', { title: `Blog not found` })

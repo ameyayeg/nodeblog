@@ -7,15 +7,21 @@
     <%- include("./partials/nav.ejs") %>
   
     <div class="details container">
+      <div class="row">
+        <div class="trash">
+          <a class="delete" data-doc="<%= blog._id %>"><i class="fas fa-trash"></i></a>
+        </div>
+        <div class="greeting">
+          <p>Welcome, <%= name %></p>
+          <button id="logout">Logout</button>
+        </div>
+      </div>
       <h2><%= blog.title %></h2>
-      <div class="container">
-        <p><%= blog.body %></p>
-      </div>
-      <div class="trash">
-        <a class="delete" data-doc="<%= blog._id %>"><i class="fas fa-trash"></i></a>
-      </div>
+      <!-- <div class="container"> -->
+      <p><%= blog.body %></p>
+      <!-- </div> -->
     </div>
-  
+    
     <%- include("./partials/footer.ejs") %>
   
     <script>
@@ -29,6 +35,11 @@
         .then(data => window.location.href = data.redirect)
         .catch(err => console.log(err));
       });
+
+      const btn = document.getElementById('logout')
+      btn.addEventListener('click', () => {
+        location.href = "/users/logout"
+      })
     </script>
   </body>
   </html>

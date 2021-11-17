@@ -5,6 +5,12 @@
     <%- include('./partials/nav.ejs')  %> 
 
     <div class="create container">
+        <div class="row">
+            <div class="greeting">
+              <p>Welcome, <%= name %></p>
+              <button id="logout">Logout</button>
+            </div>
+        </div>
         <form action="/blogs" method="POST">
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
@@ -15,7 +21,13 @@
             <button>Submit</button>
         </form>
     </div>
-    
     <%- include('./partials/footer.ejs')  %> 
+
+    <script>
+    const btn = document.getElementById('logout')
+    btn.addEventListener('click', () => {
+        location.href = "/users/logout"
+      })
+    </script>
 </body>
 </html>

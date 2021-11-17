@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs')  %> 
+<body class="loginreg">
+    <%- include('./partials/nav.ejs')  %> 
+
+    <div class="regform">
+      <form action="/users/login" method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter Password"
+          />
+        </div>
+        <button type="submit">Login</button>
+        <div class="form-group">
+          <p>
+            No Account? <a href="/users/register">Register</a>
+          </p>
+        </div>
+        <div class="form-group">
+          <%- include('./partials/messages.ejs')  %> 
+        </div>
+        
+      </form>
+      
+    </div>
+
+    <%- include('./partials/footer.ejs')  %> 
+
+    
+</body>
+</html>
